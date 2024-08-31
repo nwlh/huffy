@@ -8,3 +8,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: haskell-actions/setup@v2
       - run: runhaskell Main.hs
+      - working-directory: app/Main.hs
