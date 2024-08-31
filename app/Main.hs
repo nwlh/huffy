@@ -8,8 +8,11 @@ sortFreq [x] = [x]
 sortFreq xs = sortBy (\(_,a) (_,b) -> flip compare a b) xs
 
 analyzeString :: String -> [(Char, Int)]
+analyzeString [] = []
+analyzeString s@(x:xs) = (x, count x s) : analyzeString xs where
+  count c = length . filter (==c)
 
 main :: IO ()
 main = do
   putStrLn "PRIORITY QUEUE: "
-  print $ sortFreq [("a", 2), ("b", 5), ("c", 3)]
+  print $ sortFreq $ analyzeString "popokatepetl"
