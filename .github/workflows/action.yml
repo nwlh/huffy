@@ -1,0 +1,10 @@
+on: [push]
+name: build
+jobs:
+  runhaskell:
+    name: Hello World
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+      - run: runhaskell Main.hs
