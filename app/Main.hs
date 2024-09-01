@@ -12,7 +12,11 @@ analyzeString [] = []
 analyzeString s@(x:xs) = (x, count x s) : analyzeString xs where
   count c = length . filter (==c)
 
+filterFreq :: Eq a => [(a, b)] -> [(a, b)]
+filterFreq [] = []
+filterFreq xs = nubBy (\(a,_) (b,_) -> a == b) xs
+
 main :: IO ()
 main = do
   putStrLn "PRIORITY QUEUE: "
-  print $ sortFreq $ analyzeString "popokatepetl"
+  print $ filterFreq $ sortFreq $ analyzeString "aabcbaab"
